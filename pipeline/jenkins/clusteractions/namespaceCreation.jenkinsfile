@@ -33,4 +33,30 @@ pipeline {
             }
         }
     }
+    post {
+        success {
+            slackSend baseUrl: 'https://hooks.slack.com/services/',
+            channel: 'learning', 
+            color: '#BDFFC3', 
+            message: 'Project Name : ' + JOB_NAME + ' \n Build Status : Build number ' + currentBuild.displayName + ' finished with status: SUCCESS ===> GOOD JOB! \n Build URL : ' + BUILD_URL, 
+            teamDomain: 'Devops easy learning', 
+            tokenCredentialId: 'tia-slack-token'
+        }
+        failure {
+            slackSend baseUrl: 'https://hooks.slack.com/services/',
+            channel: 'learning', 
+            color: '#FF9FA1', 
+            message: 'Project Name : ' + JOB_NAME + ' \n Build Status : Build number ' + currentBuild.displayName + ' finished with status: FAILED ===> Please check the console output to fix this job IMMEDIATELY ===> THANKS. \n Build URL : ' + BUILD_URL, 
+            teamDomain: 'Devops easy learning', 
+            tokenCredentialId: 'tia-slack-token'
+        }
+        unstable {
+            slackSend baseUrl: 'https://hooks.slack.com/services/',
+            channel: 'learning', 
+            color: '#FFFE89', 
+            message: 'Project Name : ' + JOB_NAME + ' \n Build Status : Build number ' + currentBuild.displayName + ' finished with status: UNSTABLE ===> Please check the console output to fix this job IMMEDIATELY ===> THANKS. \n Build URL : ' + BUILD_URL, 
+            teamDomain: 'Devops easy learning', 
+            tokenCredentialId: 'tia-slack-token'
+        } 
+    }
 }

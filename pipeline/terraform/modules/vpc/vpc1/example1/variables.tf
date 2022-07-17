@@ -6,11 +6,12 @@ variable "environment" {
 */
 
 variable "region" {
-  type = string
+  type    = string
+  default = "us-east-1"
 }
 
 variable "availability_zones" {
-  type = list
+  type = list(any)
 }
 
 variable "cidr_block" {
@@ -21,8 +22,8 @@ variable "cidr_block" {
 variable "tags" {
   type = map(string)
   default = {
-      owner         = "norm.nadeau@tcs.com" 
-      project       = "mam" 
-      environment   = "mam-dev" 
+    owner       = "norm.nadeau@tcs.com"
+    project     = "mam"
+    environment = "mam-dev"
   }
 }
