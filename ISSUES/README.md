@@ -25,6 +25,8 @@ Host key verification failed.
 Tia@DESKTOP-18RKIM8 MINGW64 ~
 $ ssh-keygen -R 3.231.244.225
 ssh-keygen -R  3.143.184.59
+ssh-keygen -R server3.anomicatech.com
+
 
 # Host 10.0.0.36 found: line 11
 /c/Users/Tia/.ssh/known_hosts updated.
